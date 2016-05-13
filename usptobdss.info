@@ -1,0 +1,6 @@
+name = "USPTO BDSS API"
+description = "Request handling for the USPTO Bulk Data Storage System API."
+package = "USPTO BDSS API"
+core = 7.x
+
+files[] = usptobdss.request.inc

@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Code file.
+ */
+
+include_once 'usptobdss.pages.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usptobdss_menu() {
+  $items = array();
+
+  $items['bdss'] = array(
+    'title' => 'USPTO BDSS',
+    'page callback' => 'usptobdss_hierarchy_page',
+    'access arguments' => array('access content'),
+  );
+
+  $items['bdss/popular'] = array(
+    'title' => 'Popular Products',
+    'page callback' => 'usptobdss_popular_page',
+    'access arguments' => array('access content'),
+  );
+
+  $items['bdss/patent'] = array(
+    'title' => 'Patent',
+    'page callback' => 'usptobdss_patent_page',
+    'access arguments' => array('access content'),
+  );
+
+  $items['bdss/trademark'] = array(
+    'title' => 'Trademark',
+    'page callback' => 'usptobdss_trademark_page',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Returns product hierarchy.
+ */
+function usptobdss_hierarchy_load() {
+  module_load_include('inc', 'usptobdss', 'usptobdss.request');
+  $ret = usptobdssRequest::factory('hierarchy')
+    ->request();
+
+  return $ret;
+}
+
+/**
+ * Returns popular products.
+ */
+function usptobdss_popular_load() {
+  module_load_include('inc', 'usptobdss', 'usptobdss.request');
+  $ret = usptobdssRequest::factory('popular')
+    ->request();
+
+  return $ret;
+}
+
